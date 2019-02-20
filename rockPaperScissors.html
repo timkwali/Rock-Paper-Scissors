@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset = "utf-8">
+    <title>rockPaperScissors.html</title>
+    <script>
+      let options = ['rock', 'paper', 'scissors'];
+      let playerSelection = prompt("Choose: rock, paper or Sciccors");
+
+      // computer code
+      function computerPlay(){
+        return options[1];        
+      } // end computerPlay()
+      console.log( computerPlay() );
+
+      function play() {
+        // when computer plays rock
+        if ( (computerPlay() == options[0]) & (playerSelection == 'paper') ) {
+          alert( "You win! Paper covers rock");  
+        } else if ( ( computerPlay() == options[0]) & (playerSelection == 'scissors') ) {
+          alert( "You loose! rock smashes Scissors");
+        } else if ( ( computerPlay() == options[0]) & (playerSelection == 'rock') ){
+          alert( "Draw! Play again" );
+        } else {
+          alert( "Please type in one of the options");
+        } // end if
+
+        //when computer plays paper
+      
+
+      } // end play()
+
+      play();
+      
+    </script>
+  </head>
+
+  <body>
+  </body>
+</html>
