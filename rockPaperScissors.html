@@ -16,18 +16,21 @@
       function play() {
         // when computer plays rock
         if ( (computerPlay() == options[0]) & (playerSelection == 'paper') ) {
-          alert( "You win! Paper covers rock");  
+          alert( "You win! Paper covers rock.");  
         } else if ( ( computerPlay() == options[0]) & (playerSelection == 'scissors') ) {
-          alert( "You loose! rock smashes Scissors");
+          alert( "You loose! rock smashes Scissors.");
         } else if ( ( computerPlay() == options[0]) & (playerSelection == 'rock') ){
-          alert( "Draw! Play again" );
-        } else {
-          alert( "Please type in one of the options");
+          alert( "Draw! Play again." );
         } // end if
 
-        //when computer plays paper
-      
-
+        // when computer plays paper
+        if ( (computerPlay() == options[1]) & (playerSelection == 'scissors') ) {
+          alert( "You win! Scissors cuts paper.");  
+        } else if ( ( computerPlay() == options[1]) & (playerSelection == 'rock') ) {
+          alert( "You loose! Paper covers rock.");
+        } else if ( ( computerPlay() == options[1]) & (playerSelection == 'paper') ){
+          alert( "Draw! Play again." );
+        } // end if
       } // end play()
 
       play();
