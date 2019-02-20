@@ -9,7 +9,7 @@
 
       // computer code
       function computerPlay(){
-        return options[1];        
+        return options[2];        
       } // end computerPlay()
       console.log( computerPlay() );
 
@@ -31,6 +31,19 @@
         } else if ( ( computerPlay() == options[1]) & (playerSelection == 'paper') ){
           alert( "Draw! Play again." );
         } // end if
+
+        // when computer plays scissors
+        if ( (computerPlay() == options[2]) & (playerSelection == 'rock') ) {
+          alert( "You win! rock smashes scissors.");  
+        } else if ( ( computerPlay() == options[2]) & (playerSelection == 'paper') ) {
+          alert( "You loose! Scissors cuts paper.");
+        } else if ( ( computerPlay() == options[2]) & (playerSelection == 'scissors') ){
+          alert( "Draw! Play again." );
+        } // end if
+
+        // when playerSelection is invalid
+        
+  
       } // end play()
 
       play();
