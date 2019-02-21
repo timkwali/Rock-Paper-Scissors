@@ -4,9 +4,8 @@
     <meta charset = "utf-8">
     <title>rockPaperScissors.html</title>
     <script type = "text/javascript">
-      playRPS();
-
-      let options = ['rock', 'paper', 'scissors'];
+     
+      
 
       // computerSelection
       function computerPlay() {
@@ -16,48 +15,50 @@
       } // end computerPlay()
 
       // Play Rock Paper Scissors
-      function playRPS( playerSelection, computerSelection ) {
-        playerSelection = prompt( "Choose: rock, paper or Sciccors" );
+      function playRound( playerSelection, computerSelection ) {
+        let options = ['rock', 'paper', 'scissors'];
+        playerSelection =  prompt( "Choose: rock, paper or Sciccors" ).toLowerCase();
         computerSelection = computerPlay();
 
-        if ( playerSelection == 'rock' ) {
+        if ( playerSelection == options[0] ) {
           // when player plays rock
-          if ( computerSelection == 'paper' ) {
-            alert( "You loose! Paper covers rock.");  
-          } else if ( computerSelection == 'scissors' ) {
-            alert( "You win! Rock smashes Scissors.");
-          } else if ( computerSelection == 'rock' ){
-            alert( "Draw! Play again." );
+          if ( computerSelection == options[1] ) {
+            return "You loose! Paper covers rock.";  
+          } else if ( computerSelection == options[2] ) {
+            return "You win! Rock smashes Scissors.";
+          } else if ( computerSelection == options[0] ){
+            return "Draw! Play again.";
           } else {} 
         // end player plays rock
 
-        } else if ( playerSelection == 'paper' ) {
+        } else if ( playerSelection == options[1] ) {
           // when player plays paper
-          if ( computerSelection == 'scissors' ) {
-            alert( "You loose! Scissors cuts paper.");  
-          } else if ( computerSelection == 'rock' ) {
-            alert( "You win! Paper covers rock.");
-          } else if ( computerSelection == 'paper') {
-            alert( "Draw! Play again." );
+          if ( computerSelection == options[2] ) {
+            return "You loose! Scissors cuts paper.";  
+          } else if ( computerSelection == options[0] ) {
+            return "You win! Paper covers rock.";
+          } else if ( computerSelection == options[1]) {
+            return "Draw! Play again.";
           } else {} 
         // end player plays paper
 
-        } else if ( playerSelection == 'scissors' ) {
+        } else if ( playerSelection == options[2] ) {
           // when computer plays scissors
-          if ( computerSelection == 'rock' ) {
-            alert( "You loose! rock smashes scissors.");  
-          } else if ( computerSelection == 'paper' ) {
-            alert( "You win! Scissors cuts paper.");
-          } else if ( computerSelection == 'scissors' ){
-            alert( "Draw! Play again." );
+          if ( computerSelection == options[0] ) {
+            return "You loose! rock smashes scissors.";  
+          } else if ( computerSelection == options[1] ) {
+            return "You win! Scissors cuts paper.";
+          } else if ( computerSelection == options[2] ){
+            return "Draw! Play again.";
           } else {} 
         // end computer plays scissors
+        
         } else {
-            alert("Please enter one of the options");
+            return "Please enter one of the options";
         } //end if
 
-        console.log(computerSelection);
-      } // end playRPS
+        console.log( computerSelection );       
+      } // end playRound
       
     </script>
   </head>
