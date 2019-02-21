@@ -4,21 +4,20 @@
     <meta charset = "utf-8">
     <title>rockPaperScissors.html</title>
     <script type = "text/javascript">
-     
+     let options = ['rock', 'paper', 'scissors'];
+     let playerSelection = prompt( "Choose: rock, paper or Sciccors" ).toLowerCase();
+     let computerSelection = computerPlay();
+     console.log( 'computer plays ' + computerSelection );
       
 
       // computerSelection
       function computerPlay() {
-        let options = ['rock', 'paper', 'scissors'];
         let random = options[Math.floor(Math.random() * options.length)];
         return random;
       } // end computerPlay()
 
       // Play Rock Paper Scissors
       function playRound( playerSelection, computerSelection ) {
-        let options = ['rock', 'paper', 'scissors'];
-        playerSelection =  prompt( "Choose: rock, paper or Sciccors" ).toLowerCase();
-        computerSelection = computerPlay();
 
         if ( playerSelection == options[0] ) {
           // when player plays rock
@@ -55,11 +54,11 @@
         
         } else {
             return "Please enter one of the options";
-        } //end if
-
-        console.log( computerSelection );       
+        } //end if    
       } // end playRound
       
+      // test the function in the console
+      console.log( playRound( playerSelection, computerSelection ) );
     </script>
   </head>
 
