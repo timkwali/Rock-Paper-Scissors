@@ -6,11 +6,7 @@
     <script type = "text/javascript">
 
       let options = ['rock', 'paper', 'scissors'];
-      let playerSelection = prompt( "Choose: rock, paper or Sciccors" ).toLowerCase();
-      let computerSelection = computerPlay();
-      console.log( 'computer plays ' + computerSelection );
-
-
+      
       // computerSelection
       function computerPlay() {
         let random = options[Math.floor(Math.random() * options.length)];
@@ -24,41 +20,40 @@
         if ( playerSelection == options[0] ) {
           // when player plays rock
           if ( computerSelection == options[1] ) {
-            return "You lose! Paper covers rock.";  
+            return "         You lose! Paper covers rock.";  
           } else if ( computerSelection == options[2] ) {
-            return "You win! Rock smashes Scissors.";     
+            return "         You win! Rock smashes Scissors.";     
           } else if ( computerSelection == options[0] ){
-            return "Draw! Play again.";
+            return "         Draw!";
           } else {} 
         // end player plays rock
 
         } else if ( playerSelection == options[1] ) {
           // when player plays paper
           if ( computerSelection == options[2] ) {
-            return "You lose! Scissors cuts paper.";  
+            return "         You lose! Scissors cuts paper.";  
           } else if ( computerSelection == options[0] ) {
-            return "You win! Paper covers rock.";
+            return "         You win! Paper covers rock.";
           } else if ( computerSelection == options[1]) {
-            return "Draw! Play again.";
+            return "         Draw!";
           } else {} 
         // end player plays paper
 
         } else if ( playerSelection == options[2] ) {
           // when computer plays scissors
           if ( computerSelection == options[0] ) {
-            return "You lose! rock smashes scissors.";  
+            return "         You lose! rock smashes scissors.";  
           } else if ( computerSelection == options[1] ) {
-            return "You win! Scissors cuts paper.";
+            return "         You win! Scissors cuts paper.";
           } else if ( computerSelection == options[2] ){
-            return "Draw! Play again.";
+            return "         Draw!";
           } else {} 
         // end player plays scissors
         
         } else {
-            return "Please enter one of the options";
+            return "         You did not enter a valid option, you lose this round";
         } //end if   
       } // end playRound
-      let play1Round = playRound( playerSelection, computerSelection );
         
       // Play game
       let playerScore = 0;
@@ -68,20 +63,25 @@
 
           let playerSelection = prompt( "Choose: rock, paper or Sciccors" ).toLowerCase();
           let computerSelection = computerPlay();
-          play1Round;
-          console.log( play1Round );
+          let play1Round = playRound( playerSelection, computerSelection );
 
-          if( play1Round.slice(0, 7) == 'You win' ){
+          play1Round;
+
+
+          if( play1Round.slice(0, 16) == '         You win' ){
             playerScore += 1;
-          } else if( play1Round.slice(0, 8) == 'You lose' ){
+          } else if( play1Round.slice(0, 17) == '         You lose' || play1Round.slice(0, 17) == '         You did ' ){
             computerScore += 1;
-          } else if( play1Round.slice(0, 4) == 'Draw' ) {
+          } else if( play1Round.slice(0, 13) == '         Draw' ) {
             playerScore += 0;
             computerScore += 0;
           } else {} // end if
-        } // end for loop
+        console.log( 'Round ' + i +'- You play ' + playerSelection + ', Computer plays ' + computerSelection + '.'); //shows Player & Computer's choice  
+        console.log( play1Round); //shows result of each game round
+        } // end for loop 
+        console.log(result() ); //shows final winner
       }; // end game()
-
+     
       let result = () => {
           if( playerScore > computerScore ){
             console.log( 'playerScore = ' + playerScore);
@@ -101,7 +101,6 @@
 
       // test functions in the console 
       console.log( game() );
-      console.log( result() );
     </script>
   </head>
 
