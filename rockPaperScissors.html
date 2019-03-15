@@ -3,93 +3,115 @@
   <head>
     <meta charset = "utf-8">
     <title>rockPaperScissors.html</title>
+    <link rel = "stylesheet"
+          type = "text/css"
+          href = "rockPaperScissors.css" >
+  </head>
+
+  <body>
+    <h1 id = "h1">Click a button to play. First to 5, wins the match!</h1>
+    <button id = "rock">Rock</button>
+    <button id = "paper">Paper</button>
+    <button id = "scissors">Scissors</button>
+    <br>
+    <div id = "pScore">Player Score = 0</div>
+    <div id = "cScore">Computer Score = 0</div>
+
     <script type = "text/javascript">
-
       let options = ['rock', 'paper', 'scissors'];
-      
-      // computerSelection
+        
+        // computerSelection
       function computerPlay() {
-        let random = options[Math.floor(Math.random() * options.length)];
-        return random;
-      } // end computerPlay()
-
-
+          let random = options[Math.floor(Math.random() * options.length)];
+          return random;
+        } // end computerPlay()
+          
       // Play Rock Paper Scissors
       function playRound( playerSelection, computerSelection ) {
-
-        if ( playerSelection == options[0] ) {
-          // when player plays rock
-          if ( computerSelection == options[1] ) {
-            return "You lose! Paper covers rock.";  
-          } else if ( computerSelection == options[2] ) {
-            return "You win! Rock smashes Scissors.";     
-          } else if ( computerSelection == options[0] ){
-            return "Draw!";
-          } else {} 
-        // end player plays rock
-
-        } else if ( playerSelection == options[1] ) {
-          // when player plays paper
-          if ( computerSelection == options[2] ) {
-            return "You lose! Scissors cuts paper.";  
-          } else if ( computerSelection == options[0] ) {   
-            return "You win! Paper covers rock.";
-          } else if ( computerSelection == options[1]) {
-            return "Draw!";
-          } else {} 
-        // end player plays paper
-
-        } else if ( playerSelection == options[2] ) {
-          // when computer plays scissors
-          if ( computerSelection == options[0] ) {
-            return "You lose! rock smashes scissors.";  
-          } else if ( computerSelection == options[1] ) {
-            return "You win! Scissors cuts paper.";
-          } else if ( computerSelection == options[2] ){
-            return "Draw!";
-          } else {} 
-        // end player plays scissors
-        
-        } else {
+          
+          if ( playerSelection == options[0] ) {
+            // when player plays rock
+            if ( computerSelection == options[1] ) {
+              return "You lose! Paper covers rock.";  
+            } else if ( computerSelection == options[2] ) {
+              return "You win! Rock smashes Scissors.";     
+            } else if ( computerSelection == options[0] ){
+              return "Draw!";
+            } else {} 
+            // end player plays rock
+          
+          } else if ( playerSelection == options[1] ) {
+            // when player plays paper
+            if ( computerSelection == options[2] ) {
+              return "You lose! Scissors cuts paper.";  
+            } else if ( computerSelection == options[0] ) {   
+              return "You win! Paper covers rock.";
+            } else if ( computerSelection == options[1]) {
+              return "Draw!";
+            } else {} 
+            // end player plays paper
+          
+          } else if ( playerSelection == options[2] ) {
+            // when computer plays scissors
+            if ( computerSelection == options[0] ) {
+              return "You lose! rock smashes scissors.";  
+            } else if ( computerSelection == options[1] ) {
+              return "You win! Scissors cuts paper.";
+            } else if ( computerSelection == options[2] ){
+              return "Draw!";
+            } else {} 
+            // end player plays scissors
+                  
+          } else {
             return "You did not enter a valid option, you lose this round";
-        } //end if   
-      } // end playRound
-        
+          } //end if   
+        } // end playRound
+
       // Play game
-      let playerScore = 0;
-      let computerScore = 0;
-
-      function game()  {
-        for(let i = 1; i < 6; i++) {
-
-          // Make playerSelection case insensitive 
-          let playerSelection = prompt( "Enter: rock, paper or Sciccors" ).toLowerCase();
+      let pScore = document.getElementById("pScore");
+      let cScore = document.getElementById("cScore");
+      let h1 = document.getElementById("h1");
+      playerScore = 0;
+      computerScore = 0;
+          
+      function game(button) {
           let computerSelection = computerPlay();
+          let playerSelection = button.id;  
           let play1Round = playRound( playerSelection, computerSelection );
-
           play1Round;
-
+          h1.innerHTML = "";
+          
           // Scoring
-          if( play1Round.slice(0, 7) == 'You win' ){
+          if( play1Round.slice(0, 7) == 'You win' ) {
+            pScore.innerHTML = "";
+            h1.innerHTML =  play1Round;
             playerScore += 1;
-          } else if( play1Round.slice(0, 8) == 'You lose' || play1Round.slice(0, 8) == 'You did ' ){
+            pScore.innerHTML = "Player Score = " + playerScore;
+          } else if( play1Round.slice(0, 8) == 'You lose' ) {
+            cScore.innerHTML = "";
+            h1.innerHTML =  play1Round;
             computerScore += 1;
+            cScore.innerHTML = "Computer Score = " + computerScore;
           } else if( play1Round.slice(0, 4) == 'Draw' ) {
+            h1.innerHTML =  play1Round;
+            pScore.innerHTML = "";
             playerScore += 0;
+            pScore.innerHTML = "Player Score = " + playerScore;
+            cScore.innerHTML = "";
             computerScore += 0;
+            cScore.innerHTML = "Computer Score = " + computerScore;
           } else {} // end if
-          console.log( 'Round ' + i + '- You play ' + playerSelection + ', Computer plays ' + computerSelection + '.'); //shows Player & Computer's choice  
           console.log( '         ' + play1Round); //shows result of each game round
-        } // end for loop 
-          console.log( result() ); //shows final winner
-      } // end game()
-     
-     // Final result
+
+          if( playerScore == 5 || computerScore == 5 ){     
+            h1.innerHTML = "";
+            h1.innerHTML =  result();
+          } //shows final score
+        } // end game()
+               
+        // Final result
       function result() {
           console.log('////////////////////////////////////');
-          console.log( 'Player Score = ' + playerScore);
-          console.log( 'Computer Score = ' + computerScore);
-
           if( playerScore > computerScore ){ 
             result = "You win the match!";
           } else if( playerScore < computerScore ){
@@ -97,12 +119,16 @@
           } else {
             result = "Match Drawn!";
           } //end if
-          return result;
-      } // end result
-
-    </script>
-  </head>
-
-  <body>
+            console.log(result);
+            return result;
+        } // end result
+        
+      const button = document.querySelectorAll("button");
+      button.forEach( button => {
+      button.addEventListener("click", function() {
+        game(button);
+        });
+      });
+   </script>
   </body>
 </html>
