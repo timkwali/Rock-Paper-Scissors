@@ -10,12 +10,16 @@
 
   <body>
     <h1 id = "h1">Click a button to play. First to 5, wins the match!</h1>
-    <button id = "rock">Rock</button>
-    <button id = "paper">Paper</button>
-    <button id = "scissors">Scissors</button>
+    <div id = "buttons">
+      <button id = "rock">Rock</button>
+      <button id = "paper">Paper</button>
+      <button id = "scissors">Scissors</button>
+    </div>
     <br>
-    <div id = "pScore">Player Score = 0</div>
-    <div id = "cScore">Computer Score = 0</div>
+    <div id = "scores">
+      <p id = "pScore">Player Score = 0</p>
+      <p id = "cScore">Computer Score = 0</p>
+    </div>
 
     <script type = "text/javascript">
       let options = ['rock', 'paper', 'scissors'];
@@ -113,9 +117,9 @@
       function result() {
           console.log('////////////////////////////////////');
           if( playerScore > computerScore ){ 
-            result = "You win the match!";
+            result = "You win the match! Refresh to play again.";
           } else if( playerScore < computerScore ){
-            result = "You lose the match!";
+            result = "You lose the match! Refresh to play again.";
           } else {
             result = "Match Drawn!";
           } //end if
@@ -125,8 +129,8 @@
         
       const button = document.querySelectorAll("button");
       button.forEach( button => {
-      button.addEventListener("click", function() {
-        game(button);
+        button.addEventListener("click", function() {
+          game(button);
         });
       });
    </script>
